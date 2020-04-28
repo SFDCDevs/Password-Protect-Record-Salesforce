@@ -1,0 +1,24 @@
+<apex:page standardController="Account" lightningStylesheets="true"  extensions="Record_Locker_Extension">
+    <Apex:outputPanel id="SecureSect"> 
+        <Apex:outputPanel rendered="{!locked}">
+            <apex:form >
+                <Apex:pageMessages ></Apex:pageMessages>
+                <apex:pageBlock >
+                <apex:pageBlockButtons location="bottom">
+                            <apex:commandButton value="Unlock" action="{!unlock}" rerender="SecureSect"/>
+                        </apex:pageBlockButtons>
+                    <apex:pageBlockSection >
+                        
+                        <apex:pageBlockSectionItem >
+                            <Apex:outputLabel >Enter Password:</Apex:outputLabel>
+                            <apex:inputSecret value="{!password}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+            </apex:form>
+        </Apex:outputPanel>
+        <Apex:outputPanel rendered="{!!locked}">
+            <apex:detail />
+        </Apex:outputPanel>
+    </Apex:outputPanel>
+</apex:page>
